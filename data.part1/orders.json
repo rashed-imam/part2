@@ -1,0 +1,56 @@
+[{
+	"orderId": 1,
+	"discount": "SALE10",
+	"items":
+	[{
+		"sku": 1001,
+		"quantity": 3
+	},
+	{
+		"sku": 1004,
+		"quantity": 1
+	}]
+},
+{
+	"orderId": 2,
+	"items":
+	[{
+		"sku": 1003,
+		"quantity": 1
+	}]
+},
+{
+	"orderId": 3,
+	"discount": "SALE30",
+	"items":
+	[{
+		"sku": 1003,
+		"quantity": 1
+	},
+	{
+		"sku": 1001,
+		"quantity": 4
+	},
+	{
+		"sku": 1002,
+		"quantity": 2
+	}]
+},
+{
+	"orderId": 4,
+	"discount": "SALE10",
+	"items":
+	[{
+		"sku": 1001,
+		"quantity": 7
+	}]
+},
+{
+	"orderId": 5,
+	"discount": "SALE20",
+	"items":
+	[{
+		"sku": 1003,
+		"quantity": 1
+	}]
+}]
