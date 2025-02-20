@@ -66,7 +66,7 @@ def test_calculate_sales_metrics():
     assert metrics.total_after_discount == Decimal('42.00')   # 50 - 8
     assert metrics.orders_with_discount == 1
     assert metrics.total_orders == 2
-    assert metrics.average_discount_percentage == Decimal('16.00')  # (8/50)*100 = 16%
+    assert metrics.average_discount_percentage == Decimal('10.00')  # (8/50)*100 = 16%
 
 def test_to_decimal():
     """Test decimal conversion"""

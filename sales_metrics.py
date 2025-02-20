@@ -93,6 +93,7 @@ def calculate_sales_metrics(
         total_after = ZERO
         total_discount = ZERO
         orders_with_discount = 0
+        total_discount_in_percent=ZERO
         total_orders = len(orders_data)
 
         # Process orders
@@ -106,6 +107,7 @@ def calculate_sales_metrics(
 
                 # Apply stacking discounts if present
                 discount_amount = ZERO
+                total_discount_percentage=ZERO
                 if discount_codes := order.get("discount"):
                     # Split discount codes by comma and calculate total discount
                     codes = [code.strip() for code in discount_codes.split(",")]
@@ -120,6 +122,7 @@ def calculate_sales_metrics(
                         logger.warning(f"Invalid discount code(s): {discount_codes}")
 
                 # Update totals
+                total_discount_in_percent+=total_discount_percentage
                 total_before += order_total
                 total_discount += discount_amount
                 total_after += (order_total - discount_amount)
@@ -129,11 +132,16 @@ def calculate_sales_metrics(
                 raise SalesCalculationError(f"Invalid order data: {e}")
 
         # Calculate average discount
+        # avg_discount = (
+        #     (total_discount / total_before) * HUNDRED
+        #     if total_before > ZERO and orders_with_discount > 0
+        #     else ZERO
+        # )
+
         avg_discount = (
-            (total_discount / total_before) * HUNDRED
-            if total_before > ZERO and orders_with_discount > 0
-            else ZERO
-        )
+                    ((total_discount / total_orders) * total_discount_in_percent) / total_discount) *HUNDRED
+
+    
 
         metrics = SalesMetrics(
             total_before_discount=total_before,
